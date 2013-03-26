@@ -5,8 +5,6 @@ Official Project URL: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtze
 
 Looking for the iOS 6 Smart Banner, but saddened by it only supporting apps on the App Store & not web apps? This little jQuery-powered script is here to help. Add this small script to your site & invite your visitors to save your site to their home screen alongside the rest of their apps!
 
-Take a look at the top of this page to see a preview of the banner.
-
 ##Quick Preview##
 
 Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/)
@@ -67,11 +65,14 @@ Version 1.0 - September 19, 2012
 
 ##Example (using default settings)##
 
-`$().smartWebBanner();`
+```javascript
+$().smartWebBanner();
+```
 
 ##Example (with full options)##
 
-``$().smartWebBanner({
+```javascript
+$().smartWebBanner({
     title: "Tree Finder", // What the title of the "app" should be in the banner | Default: "Web App"
     titleSwap: false, // Whether or not to use the title specified here has the default label of the home screen icon (otherwise uses the page's <title> tag) | Default: true
     url: 'http://appleorchard.com', // URL to mask the page as before saving to home screen (allows for having it save the homepage of a site no matter what page the visitor is on) | Default: ''
@@ -90,7 +91,8 @@ Version 1.0 - September 19, 2012
     theme: 'dark', // Change between "light" & "dark" theme to fit your site design | Default: "light"
     autoApp: true, // Whether or not it should auto-add the mobile-web-app meta tag that makes it open as an app rather than in mobile safari | Default: false
     debug: true // Whether or not it should always be shown (even for non-iOS devices & if cookies have previously been set) *This is helpful for testing and/or previewing | Default: false
-});``
+});
+```
 
 ##Like it? Maybe throw me a few bucks##
 
