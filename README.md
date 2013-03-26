@@ -96,23 +96,23 @@ $().smartWebBanner({
 
 ##Like it? Maybe throw me a few bucks##
 
-This is a one-man project. I can't put an accurate price on what value you might get out of this or the time saved... so I leave you to pay what you want. Really, feel free to just use it. [Click here to learn more](http://kurtzenisek.com/p/smart-web-banner/#donate)
+This is a one-man project. I can't put an accurate price on what value you might get out of this or the time saved... so I leave you to pay what you want. Really, feel free to just use it. [Click here to learn more.](http://kurtzenisek.com/p/smart-web-banner/#donate)
 
 ##Support##
 
-[Email me](http://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&c=h-nAexn4QTO2z6nieTeXVg==)
+<a href="http://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address" class="button">Email me</a>
 
 ##FAQs##
 
-**Need to have it save the homepage of your site rather than the page the visitor is on?**
+**Need to have it save the homepage of your site rather than the page the visitor is on?**<br />
 Saving a page to the home screen saves the current page by default, but you can set the url option to be whatever URL you would like it to save & the plugin takes care of the rest.
 
 Tip: set url to '/' to have it always be the homepage of your site while being independent of the domain itself. Also, it can't be a different domain for security reasons.
 
-**Need to adjust the size of the banner to fit the scale of your site?**
+**Need to adjust the size of the banner to fit the scale of your site?**<br />
 This plugin's CSS was built to refer to two elements (with one variant) that then determines the size of everything else. Simply change the font-size for #smartWebBanner & #swb-instructions (add .ipad for iPad-specific sizes) in your own CSS (or edit the plugin directly) to fit your needs.
 
-**Looking to use this to promote *non web-based* Android apps and/or iOS apps on older iOS versions and/or different browsers?**
+**Looking to use this to promote *non web-based* Android apps and/or iOS apps on older iOS versions and/or different browsers?**<br />
 Check out [Jasny's fork](http://jasny.github.com/jquery.smartbanner/) for Android apps & or iOS apps older than iOS 6.
 Also check out [iJason's fork](https://github.com/ijason/Smart-App-Banners) aimed purely at making it available for iOS apps in other iOS browsers (Google Chrome) & older iOS versions.
 Note: Both of these are for non-web apps. This is the only plugin aimed at web apps (to my knowledge).
