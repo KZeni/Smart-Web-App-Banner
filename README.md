@@ -29,6 +29,7 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 
 ##Roadmap##
 
+- Update to use iOS 7 design on iPhones & iPads running iOS 7 (new icons, locations, and overall design).
 - Implement "apple-mobile-web-app-title" meta tag support.
 - Improve the autoApp feature that adds the mobile-web-app meta tag so that it also prevents normal (non-AJAX) links from opening in Safari (unless leaving the domain or going to a media file [due to lack of a back button]). Change the default autoApp setting as it's now much more useful for standard sites.
 - Look into adding to jQuery plugin director(ies).
