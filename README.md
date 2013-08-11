@@ -98,7 +98,7 @@ $().smartWebBanner({
 
 ##Like it? Maybe throw me a few bucks##
 
-This is a one-man project. I can't put an accurate price on what value you might get out of this or the time saved... so I leave you to pay what you want. Really, feel free to just use it. [Click here to learn more.](http://kurtzenisek.com/p/smart-web-banner/#donate)
+This is a one-man project. I can't put an accurate price on what value you might get out of this or the time saved... so I leave you to pay what you want. Really, feel free to just use it. [Click here to learn more.](http://kurtzenisek.com/p/smart-web-banner/#download)
 
 ##Support##
 
