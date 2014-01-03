@@ -30,6 +30,7 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 ##Roadmap##
 
 - Update to use iOS 7 design on iPhones & iPads running iOS 7 (new icons, locations, and overall design).
+- Make available on cdnjs.com.
 - Implement "apple-mobile-web-app-title" meta tag support.
 - Improve the autoApp feature that adds the mobile-web-app meta tag so that it also prevents normal (non-AJAX) links from opening in Safari (unless leaving the domain or going to a media file [due to lack of a back button]). Change the default autoApp setting as it's now much more useful for standard sites.
 - Look into adding to jQuery plugin director(ies).
@@ -119,4 +120,10 @@ Check out [Jasny's fork](http://jasny.github.com/jquery.smartbanner/) for Androi
 Also check out [iJason's fork](https://github.com/ijason/Smart-App-Banners) aimed purely at making it available for iOS apps in other iOS browsers (Google Chrome) & older iOS versions.
 Note: Both of these are for non-web apps. This is the only plugin aimed at web apps (to my knowledge).
 
+##License##
+
+jQuery Smart Web App Banner is provided under the [Apache License, 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
+
 Please know that this is in no way created, owned, or managed by Apple Inc. nor am I employed by Apple Inc.
+
+[![Analytics](https://ga-beacon.appspot.com/UA-15075859-6/Smart-Web-App-Banner/readme?pixel)](https://github.com/igrigorik/ga-beacon)
