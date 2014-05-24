@@ -1,22 +1,40 @@
 /*!
  * jQuery Smart Web App Banner (Add to Home Screen)
- * Copyright (c) 2012 Kurt Zenisek @ kzeni.com
- * Version: 1.3 (22-MAR-2013)
+ * Copyright (c) 2014 Kurt Zenisek @ kzeni.com
+ * Version: 1.4 (24-MAY-2014)
  * Requires: jQuery v1.7 or later
  */
 ;(function($){
 	$.fn.smartWebBanner = function(options){
 
-		var origHtmlMargin = parseFloat($('html').css('margin-top')); // Get the original margin-top of the HTML element so we can take that into account
+		// Find out about the device being used
 		var iPad = navigator.userAgent.match(/iPad/i) != null; // Check if using an iPad
 		var iPhone = navigator.userAgent.match(/iPhone/i) != null; // Check if using an iPhone
 		var Safari = (/Safari/i).test(navigator.appVersion) && !(/CriOS/i).test(navigator.appVersion); // Check if using Safari (making sure to exclude Chrome for iOS)
 		var standalone = navigator.standalone; // Check if it's already a standalone web app or running within a webui view of an app (not mobile safari)
+		// Detect iOS version
+		function iOSversion(){ // From http://stackoverflow.com/a/14223920
+			if(iPhone||iPad){ // Must be iOS device, otherwise returns an error
+				var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+				return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+			}else{
+				return false;
+			}
+		}
+		var ver = iOSversion();
+		if(ver[0] <= 6) // They're running iOS 6 or earlier
+			var iOS7 = false;
+		else // Mark iOS 7 styling as true. This will need to be revisited if a new style is introduced in a future version of iOS.
+			var iOS7 = true;
+
+		// Find out about the website itself
+		var origHtmlMargin = parseFloat($('html').css('margin-top')); // Get the original margin-top of the HTML element so we can take that into account
 		var bannerHeight; // Make variable global (updated in createBanner)
 		var originalTitle = document.title; // Save the page's <title>
 		var originalURL = window.location.href; // Save the page's url
 
-		if(typeof options == 'String'){ // If they specified a command (like "show" or "hide")
+		if(typeof options == 'string'){ // If they specified a command (like "show" or "hide")
+			bannerHeight = $('#smartWebBanner').height(); // Accomodate different sized banners
 			if(typeof opts == 'undefined')
 				var opts = $.fn.smartWebBanner.defaults;
 			switch(options){
@@ -47,8 +65,18 @@
 				$('#swb-instructions').html('<strong>It appears this isn\'t an iOS device.</strong> This is a preview of the iPhone popup design though.');
 			if(opts.showFree)
 				$('#smartWebBanner').addClass('free');
-			if(opts.theme == 'dark')
-				$('#smartWebBanner').addClass('dark');
+			if(opts.theme.toLowerCase() == 'auto'){
+				if(iOS7)
+					$('#smartWebBanner,#swb-instructions').addClass('ios7');
+				else
+					$('#smartWebBanner,#swb-instructions').addClass('ios6');
+			}
+			if(opts.theme.toLowerCase() == 'ios 7')
+				$('#smartWebBanner,#swb-instructions').addClass('ios7');
+			if(opts.theme.toLowerCase() == 'ios 6')
+				$('#smartWebBanner,#swb-instructions').addClass('ios6');
+			if(opts.theme.toLowerCase() == 'dark')
+				$('#smartWebBanner,#swb-instructions').addClass('dark');
 			if(opts.useIcon){
 				if($('link[rel="apple-touch-icon-precomposed"]').length > 0){
 					iconURL = $('link[rel="apple-touch-icon-precomposed"]').attr('href');
@@ -153,7 +181,7 @@
 		popupDuration: 6000, // How long the instructions are shown before fading out (0 = show until manually closed)
 		popupSpeedIn: 200, // Show animation speed of the popup
 		popupSpeedOut: 900, // Close animation speed of the popup
-		theme: 'light', // Change between "light" & "dark" theme to fit your site design
+		theme: 'auto', // Change between "auto" (detect iOS version), "iOS 6", "iOS 7", and "dark" theme to fit your site design & visitors
 		autoApp: false, // Whether or not it should auto-add the mobile-web-app meta tag that makes it open as an app rather than in mobile safari
 		debug: false // Whether or not it should always be shown (even for non-iOS devices & if cookies have previously been set) *This is helpful for testing and/or previewing
 	};

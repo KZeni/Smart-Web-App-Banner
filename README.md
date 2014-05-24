@@ -11,7 +11,8 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 
 ##Features##
 
-- The iOS 6 Smart Banner look & feel, but made for web apps.
+- The iOS 6 & 7 Smart Banner look & feel, but made for web apps!
+- Intelligently shows iOS 6/7 banner design depending on the what the visitor is using.
 - Slides the entire site down rather than obstructing the page from your visitors with a popup.
 - Add CSS & JavaScript, and call the script... that's it. Graphics utilize CSS 3 & use embedded icons at retina resolution (which is perfect for Mobile Safari) so there's no images to be concerned about.
 - Only shown when using Mobile Safari since that's the only browser with home screen integration.
@@ -29,15 +30,21 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 
 ##Roadmap##
 
-- Update to use iOS 7 design on iPhones & iPads running iOS 7 (new icons, locations, and overall design).
-- Make available on cdnjs.com.
 - Implement "apple-mobile-web-app-title" meta tag support.
 - Improve the autoApp feature that adds the mobile-web-app meta tag so that it also prevents normal (non-AJAX) links from opening in Safari (unless leaving the domain or going to a media file [due to lack of a back button]). Change the default autoApp setting as it's now much more useful for standard sites.
-- Look into adding to jQuery plugin director(ies).
 - Consider implementing in WordPress plugin form for those looking for this functionality without the ability/time to implement the script itself (have it pull the blog's name for the title & description for the "author"), and look into building out a plugin settings page for the script's options.
 - Get feedback from the community!
 
 ##Changelog##
+
+Version 1.4 - May 24, 2014
+
+- Updated to use iOS 7 design on iPhones & iPads running iOS 7 (new icons, locations, popups, and overall design).
+- Now auto-selects iOS 6/7 style when appropriate. Important: Theme names have changed as there is now "Auto" (default), "iOS 6", "iOS 7", and "Dark". Auto will use either iOS 6 & 7 depending on what the device is running.
+
+May 20, 2014
+
+- jQuery Smart Web App Banner is now available on [cdnjs.com](http://cdnjs.com/libraries/jquery-smart-web-app-banner) as a hosted CDN option!
 
 Version 1.3 - March 22, 2013
 
@@ -97,9 +104,9 @@ $().smartWebBanner({
 });
 ```
 
-##Like it? Maybe throw me a few bucks##
+##Download Now##
 
-This is a one-man project. I can't put an accurate price on what value you might get out of this or the time saved... so I leave you to pay what you want. Really, feel free to just use it. [Click here to learn more.](http://kurtzenisek.com/p/smart-web-banner/#download)
+[Click here to view the download options.](http://kurtzenisek.com/p/smart-web-banner/#download)
 
 ##Support##
 
