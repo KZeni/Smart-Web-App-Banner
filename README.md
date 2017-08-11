@@ -90,19 +90,19 @@ Version 1.0 - September 19, 2012
 
 ## Example (using default settings)
 
-<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/basic.js?footer=minimal"></script>
+[examples/basic.js](https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/basic.js)
 
 ## Example (with full options)
 
-<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/full-options.js?footer=minimal"></script>
+[examples/full-options.js](https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/full-options.js)
 
 ## Example performing actions when the banner is shown and/or hidden
 
-<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/perform-actions-on-toggle.js?footer=minimal"></script>
+[https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/perform-actions-on-toggle.js](examples/perform-actions-on-toggle.js)
 
 ## Download Now
 
-- [Download](http://gum.co/jquery-smart-web-app-banner)<script type="text/javascript" src="https://gumroad.com/js/gumroad.js"></script>
+- [Download](http://gum.co/jquery-smart-web-app-banner)
 - [Use cdnjs](http://cdnjs.com/libraries/jquery-smart-web-app-banner)
 
 **It is open source:** You can [view it on Github](https://github.com/KZeni/Smart-Web-App-Banner) and download from there too!
