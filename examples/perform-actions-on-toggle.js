@@ -4,3 +4,9 @@ $('#smartWebBanner').on('swb:shown',function(){
 $('#smartWebBanner').on('swb:closed',function(){
 	alert('Banner was closed');
 });
+$('#smartWebBanner').on('swb:instructions-shown',function(){
+	alert('Save to homescreen instructions are now shown');
+});
+$('#smartWebBanner').on('swb:instructions-closed',function(){
+	alert('Save to homescreen instructions are now closed');
+});

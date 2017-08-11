@@ -53,7 +53,9 @@
 			}
 		}
 		function showInstructions(){
-			$('#swb-instructions').fadeIn(opts.popupSpeedIn);
+			$('#swb-instructions').fadeIn(opts.popupSpeedIn,function(){
+				$('#smartWebBanner').trigger('swb:instructions-shown');
+			});
 			if(opts.titleSwap){ // Swap out the page's <title> with the specified title
 				document.title = opts.title;
 			}else if($('meta[name="apple-mobile-web-app-title"]').length>0){ // Use the "apple-mobile-web-app-title" meta tag if present (final fallback being the page's <title> tag [which doesn't need to be accounted for since it's the default]).
@@ -68,7 +70,9 @@
 			setCookie('swb-saved','true',opts.daysReminder);
 		}
 		function hideInstructions(){
-			$('#swb-instructions').fadeOut(opts.popupSpeedOut);
+			$('#swb-instructions').fadeOut(opts.popupSpeedOut,function(){
+				$('#smartWebBanner').trigger('swb:instructions-closed');
+			});
 			if(opts.titleSwap){ // Swap the page's <title> back to the original since they should've added it to their home screen by now & we might as well use what the title was before
 				setTimeout(function(){document.title = originalTitle;},12000);
 			}

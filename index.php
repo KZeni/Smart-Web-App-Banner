@@ -63,26 +63,30 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 		<li>Set how long it will be before the banner is shown again after it's closed &amp; after the visitor presses "save" (avoids annoying visitors).</li>
 		<li>Automatic icon detection via &lt;link&gt; tag (isn't shown if it isn't available, lets you easily overwrite it if desired, and it even adds gloss to the icon if it detects it isn't precomposed [can also be set via an option]).</li>
 		<li>Can automatically add <code>&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;</code> if not already present (saves site as a web app when added to home screen &amp; makes it so the banner isn't shown when revisiting the site).</li>
+		<li>Light &amp; Dark themes to make it fit your site design (I really love both). Preview the themes with the buttons above, or <a href="#dark" class="theme-toggle">click here</a>.</li>
+		<li>Show/hide the banner on demand using <code><a href="#show">$().smartWebBanner('show');</a></code> &amp; <code><a href="#hide">$().smartWebBanner('hide');</a></a></code> (click to preview).</li>
+		<li>Event triggers for swb:shown, swb:closed, swb:instructions-shown, and swb:instructions:closed on the banner element for performing additional actions when the banner or instructions are shown or closed.</li>
+		<li>Adds classes to the page's HTML element based on the state of the banner for adjusting aspects of the site via CSS based on the banner's state.</li>
 		<li>Can be scaled/resized to fit your site's mobile viewport by changing the font-size of #smartWebBanner &amp; #swb-instructions via CSS to have the rest scales with it (add .ipad to the selector for iPad-specific sizes).</li>
 		<li>Device-specific instructions ("add to home screen" is at the top of an iPad while it's at the bottom of an iPhone). Even matches the look &amp; feel of the device's native popup (subtle color &amp; size difference).</li>
 		<li>Swaps out the page's URL with specified URL (using HTML5 replaceState) so that's what the home screen icon takes the visitor to after saving it rather than the page they happened to be on when they went to add it to their home screen (which is the default behavior). For example, make it so the home screen button is always your homepage.</li>
-		<li>Swaps out the page's title with the specified title so that's what the icon's default label is when adding it to the home screen (which would otherwise use the existing page title). Seems minor, but this can be impactful.</li>
+		<li>Swaps out the page's title with the specified title so that's what the icon's default label is when adding it to the home screen (which would otherwise use the existing apple-mobile-web-app-title meta tag or the page's title). Seems minor, but this can be impactful.</li>
 		<li>Helpful debug option (sets the banner to be shown in all browsers &amp; disregards the already closed/saved cookies) makes previewing/testing the banner a breeze.</li>
-		<li>Light &amp; Dark themes to make it fit your site design (I really love both). Preview the themes with the buttons above, or <a href="#dark" class="theme-toggle">click here</a>.</li>
-		<li>Show/hide the banner on demand using <code><a href="#show">$().smartWebBanner('show');</a></code> &amp; <code><a href="#hide">$().smartWebBanner('hide');</a></a></code> (click to preview).</li>
 		<li>Incredibly configurable via plenty of options! *See example below for full list.</li>
 	</ul>
 	<h2>Roadmap</h2>
 	<ul>
 		<li>Implement Chrome support & style for Android devices.</li>
 		<li>Improve the autoApp feature that adds the mobile-web-app meta tag so that it also prevents normal (non-AJAX) links from opening in Safari (unless leaving the domain or going to a media file [due to lack of a back button]). Change the default autoApp setting as it's now much more useful for standard sites.</li>
-		<li>Consider implementing in WordPress plugin form for those looking for this functionality without the ability/time to implement the script itself (have it pull the blog's name for the title &amp; description for the "author"), and look into building out a plugin settings page for the script's options.</li>
-		<li>Get feedback from the community!</li>
+		<li>Consider implementing in WordPress plugin form for those looking for this functionality without the ability/time to implement the script itself (have it pull the blog's name for the title &amp; description for the "author"), and look into building out a plugin settings page for the script's options. Also, the script should be updated to automatically accomodate WordPress' admin bar.</li>
+		<li>Code overhaul/rewrite/cleanup.</li>
+		<li>Create a theme system which allows CSS files to be provided individually to determine the design (separate from the core styles). This is technically possible but many of the existing CSS styles need to be overwritten to accomplish a new design.</li>
+		<li>Get feedback from the community! (<a href="https://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('https://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">Email Me</a>)</li>
 	</ul>
 	<h2>Changelog</h2>
 	<p>Version 1.5 - August 8, 2017</p>
 	<ul>
-		<li>Added <code>swb:shown</code> and <code>swb:closed</code> events/triggers to the <code>$('#smartWebBanner')</code> element that are fired when the banner is shown and closed, respectively. This allows actions to occur when the banner is shown/hidden (ex. <code>$('#smartWebBanner').on('swb:closed',function(){alert('Banner was closed');});</code>)</li>
+		<li>Added <code>swb:shown</code>, <code>swb:closed</code>, <code>swb:instructions-shown</code> and <code>swb:instructions-closed</code> events/triggers to the <code>$('#smartWebBanner')</code> element that are fired when the banner is shown and closed, respectively. This allows actions to occur when the banner is shown/hidden (ex. <code>$('#smartWebBanner').on('swb:closed',function(){alert('Banner was closed');});</code>)</li>
 		<li>Made the HTML element have <code>.swb-shown</code> and <code>.swb-closed</code> toggled depending on if the banner is shown or closed. This allows any parts of the site to be changed based on wheter the banner is shown by referencing those CSS classes.</li>
 		<li>Updated script to follow JSHint.</li>
 		<li>Implemented SCSS for the working stylesheet.</li>
@@ -100,7 +104,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 	<p>Version 1.3 - March 22, 2013</p>
 	<ul>
 		<li>Added feature that swaps out the page's URL with the URL that's specified via the script's options. This means you can set it to the homepage of your site so that using the Add to Home Screen feature will save the homepage rather than the page that the visitor is on (the default behavior).</li>
-		<li>Still stuck on jQuery older than version 1.7? This URL swapping feature has been added to that version as well &amp; is available <a href="jQuery.smartWebBanner.pre-1.7.min.js">here</a> (it's otherwise recommended to run the latest version found below).</li>
+		<li>Still stuck on jQuery older than version 1.7? This URL swapping feature has been added to that version as well &amp; is available <a href="https://github.com/KZeni/Smart-Web-App-Banner/blob/master/jQuery.smartWebBanner.pre-1.7.min.js" target="_blank">here</a> (it's otherwise recommended to run the latest version found below).</li>
 	</ul>
 	<p>Version 1.2 - March 20, 2013</p>
 	<ul>
@@ -108,7 +112,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 	</ul>
 	<p>Version 1.1.2 - March 20, 2013</p>
 	<ul>
-		<li>Swapped out .live() for .on() for jQuery 1.9+ compatibility.<br />Now requires jQuery 1.7+, but the previous version can be downloaded <a href="jQuery.smartWebBanner.pre-1.7.min.js">here</a> (using the latest CSS will work).</li>
+		<li>Swapped out .live() for .on() for jQuery 1.9+ compatibility.<br />Now requires jQuery 1.7+, but the previous version can be downloaded <a href="https://github.com/KZeni/Smart-Web-App-Banner/blob/master/jQuery.smartWebBanner.pre-1.7.min.js" target="_blank">here</a> (using the latest CSS will work).</li>
 	</ul>
 	<p>Version 1.1.1 - October 3, 2012</p>
 	<ul>
@@ -124,13 +128,13 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 		<li>Initial Release (same day as iOS 6).</li>
 	</ul>
 	<h2>Beginner's Getting Started Guide</h2>
-	<p><a href="https://gist.github.com/KZeni/cbd6e19e94617cda9a16#file-getting-started-md" class="button" target="_blank">Open Getting Started Guide</a></p>
+	<p><a href="https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/Getting%20Started.md" class="button" target="_blank">Open Getting Started Guide</a></p>
 	<h2>Example (using default settings)</h2>
 	<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/basic.js?footer=minimal"></script>
 	<h2>Example (with full options)</h2>
 	<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/full-options.js?footer=minimal"></script>
-	<h2>Example of additional code to toggle a class on the HTML element when the banner's shown/hidden</h2>
-	<script src="https://gist.github.com/KZeni/2c7be4ccbed2914082492b72ff17cde1.js"></script>
+	<h2>Example performing actions when the banner is shown and/or hidden</h2>
+	<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/perform-actions-on-toggle.js?footer=minimal"></script>
 	<h2 id="download">Download Now</h2>
 	<p>
 		<a href="http://gum.co/jquery-smart-web-app-banner" class="button">Download</a><script type="text/javascript" src="https://gumroad.com/js/gumroad.js"></script>
@@ -139,9 +143,9 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 	<p><strong>Pay What You Want:</strong> Free is an option! <em>Just enter $0</em>; that's cool!<br />I wanted a way for those who'd like to support the project to share a few bucks. Pressing "<a href="http://gum.co/jquery-smart-web-app-banner">download</a>" asks for your email, but you won't be spammed (it's simply used to give you a receipt &amp; a backup download link).</p>
 	<p><strong>Using a CDN:</strong> <a href="http://cdnjs.com/libraries/jquery-smart-web-app-banner" target="_blank">cdnjs.com</a> makes it quick &amp; easy to add the script (complete with CSS) to your site with the benefits of a CDN. It even supports multiple protocols so it's encouraged to leave the protocol off.</p>
 	<p><strong>It is open source:</strong> You can <a href="https://github.com/KZeni/Smart-Web-App-Banner" target="_blank">view it on Github</a> and download from there too!</p>
-	<p>Requires: jQuery v1.7 or later<br />Still using jQuery 1.3.2 - 1.8.x? Use the jQuery.smartWebBanner.pre-1.7.min.js file instead.</p>
+	<p>Requires: jQuery v1.7 or later<br />Still using jQuery 1.3.2 - 1.8.x? Use the <a href="https://github.com/KZeni/Smart-Web-App-Banner/blob/master/jQuery.smartWebBanner.pre-1.7.min.js" target="_blank">jQuery.smartWebBanner.pre-1.7.min.js</a> file instead.</p>
 	<h2 id="support">Support</h2>
-	<p><a href="http://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address" class="button">Email me</a></p>
+	<p><a href="https://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('https://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address" class="button">Email me</a></p>
 	<p><a href="https://github.com/KZeni/Smart-Web-App-Banner" target="_blank">View on Github</a></p>
 	<h2 id="faqs">FAQs</h2>
 	<p><strong>Need to have it save the homepage of your site rather than the page the visitor is on?</strong><br />Saving a page to the home screen saves the current page by default, but you can set the <code>url</code> option to be whatever URL you would like it to save &amp; the plugin takes care of the rest.</p>
