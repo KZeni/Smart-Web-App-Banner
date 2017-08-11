@@ -19,8 +19,8 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 - Set how long it will be before the banner is shown again after it's closed &amp; after the visitor presses "save" (avoids annoying visitors).
 - Automatic icon detection via &lt;link&gt; tag (isn't shown if it isn't available, lets you easily overwrite it if desired, and it even adds gloss to the icon if it detects it isn't precomposed [can also be set via an option]).
 - Can automatically add `&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;` if not already present (saves site as a web app when added to home screen &amp; makes it so the banner isn't shown when revisiting the site).
-- Light &amp; Dark themes to make it fit your site design (I really love both). Preview the themes with the buttons above, or <a href="#dark" class="theme-toggle">click here</a>.
-- Show/hide the banner on demand using `<a href="#show">$().smartWebBanner('show');</a>` &amp; `<a href="#hide">$().smartWebBanner('hide');</a></a>` (click to preview).
+- Light &amp; Dark themes to make it fit your site design (I really love both). Preview the themes with the buttons on [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/)
+- Show/hide the banner on demand using `<a href="#show">$().smartWebBanner('show');</a>` &amp; `<a href="#hide">$().smartWebBanner('hide');</a></a>` (can be previewed at [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/))
 - Event triggers for swb:shown, swb:closed, swb:instructions-shown, and swb:instructions:closed on the banner element for performing additional actions when the banner or instructions are shown or closed.
 - Adds classes to the page's HTML element based on the state of the banner for adjusting aspects of the site via CSS based on the banner's state.
 - Can be scaled/resized to fit your site's mobile viewport by changing the font-size of #smartWebBanner &amp; #swb-instructions via CSS to have the rest scales with it (add .ipad to the selector for iPad-specific sizes).
