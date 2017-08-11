@@ -12,7 +12,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fa4343; }
 a { color:#149aff; }
 a:hover { color:#30a6ff; }
 a:active { color:#333; }
-.button { border:1px solid #bfbfbf; padding:4px 21px; font-size:1.2em; text-align:center; font-weight:bold; color:#6a6a6a; background:-webkit-linear-gradient(top, #efefef 0%,#dcdcdc 100%); text-decoration:none; text-shadow:0 1px 0 rgba(255,255,255,0.8); border-radius:3px; box-shadow:0 1px 0 rgba(255,255,255,0.6),0 1px 0 rgba(255,255,255,0.7) inset; }
+.button { display:inline-block; margin:2px; border:1px solid #bfbfbf; padding:4px 21px; font-size:1.2em; text-align:center; font-weight:bold; color:#6a6a6a; background:-webkit-linear-gradient(top, #efefef 0%,#dcdcdc 100%); text-decoration:none; text-shadow:0 1px 0 rgba(255,255,255,0.8); border-radius:3px; box-shadow:0 1px 0 rgba(255,255,255,0.6),0 1px 0 rgba(255,255,255,0.7) inset; }
 .button:hover{ color:#7c7c7c; background:-webkit-linear-gradient(top, #fdfdfd 0%,#dcdcdc 100%); }
 .button:active,.button.active { color:#444; background:-webkit-linear-gradient(top, #dcdcdc 0%,#efefef 100%); }
 #site { margin:3em auto 2em; padding:0.5em 2em 2em; border:3px solid #ff7e7e; max-width:860px; line-height:1.4em; color:#444; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,0.2); }

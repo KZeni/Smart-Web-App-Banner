@@ -1,16 +1,21 @@
 {
   "name": "Smart-Web-App-Banner",
-  "version": "0.0.1",
+  "version": "1.5",
   "authors": [
     "KZeni1@gmail.com"
   ],
   "description": "Add this small script to your site & invite your visitors to save your site to their home screen alongside the rest of their apps!",
-  "main": "jQuery.smartWebBanner.js",
+  "main": "jQuery.smartWebBanner.min.js",
   "keywords": [
-    "ios",
-    "banner",
-    "smartphone",
-    "android"
+  	"web app banner",
+  	"web banner",
+  	"app banner",
+  	"jquery app banner",
+  	"homescreen",
+  	"Safari",
+  	"iOS",
+  	"iPhone",
+  	"iPad"
   ],
   "license": "Apache License, 2.0",
   "homepage": "http://kurtzenisek.com/p/smart-web-banner/",
@@ -20,8 +25,8 @@
     "bower_components",
     "test",
     "tests"
-  ],  
+  ],
   "dependencies": {
-    "jquery": "2.1.1"
+    "jquery": "1.7"
   }
 }
