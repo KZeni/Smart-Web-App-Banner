@@ -3,16 +3,16 @@
 
 Official Project URL: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/)
 
-Looking for the iOS 6 & 7 Smart Banner, but saddened by it only supporting apps on the App Store & not web apps? This little jQuery-powered script is here to help. Add this small script to your site & invite your visitors to save your site to their home screen alongside the rest of their apps!
+Looking for the iOS 6 & 7+ Smart Banner, but saddened by it only supporting apps on the App Store & not web apps? This little jQuery-powered script is here to help. Add this small script to your site & invite your visitors to save your site to their home screen alongside the rest of their apps!
 
-##Quick Preview##
+## Quick Preview
 
 Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/)
 
-##Features##
+## Features
 
-- The iOS 6 & 7 Smart Banner look & feel, but made for web apps!
-- Intelligently shows iOS 6/7 banner design depending on the what the visitor is using.
+- The iOS 6 & 7+ Smart Banner look & feel, but made for web apps!
+- Intelligently shows iOS 6/7+ banner design depending on the what the visitor is using.
 - Slides the entire site down rather than obstructing the page from your visitors with a popup.
 - Add CSS & JavaScript, and call the script... that's it. Graphics utilize CSS 3 & use embedded icons at retina resolution (which is perfect for Mobile Safari) so there's no images to be concerned about.
 - Only shown when using Mobile Safari since that's the only browser with home screen integration.
@@ -28,14 +28,14 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 - Show/hide the banner on demand using $().smartWebBanner('show'); & $().smartWebBanner('hide');
 - Incredibly configurable via plenty of options! *See example below for full list.
 
-##Roadmap##
+## Roadmap
 
 - Implement "apple-mobile-web-app-title" meta tag support.
 - Improve the autoApp feature that adds the mobile-web-app meta tag so that it also prevents normal (non-AJAX) links from opening in Safari (unless leaving the domain or going to a media file [due to lack of a back button]). Change the default autoApp setting as it's now much more useful for standard sites.
 - Consider implementing in WordPress plugin form for those looking for this functionality without the ability/time to implement the script itself (have it pull the blog's name for the title & description for the "author"), and look into building out a plugin settings page for the script's options.
 - Get feedback from the community!
 
-##Changelog##
+## Changelog
 
 Version 1.4 - May 24, 2014
 
@@ -73,17 +73,17 @@ Version 1.0 - September 19, 2012
 
 - Initial Release (same day as iOS 6).
 
-##Beginner's Getting Started Guide
+## Beginner's Getting Started Guide
 
 [Open Getting Started Guide](https://gist.github.com/KZeni/cbd6e19e94617cda9a16#file-getting-started-md)
 
-##Example (using default settings)##
+## Example (using default settings)
 
 ```javascript
 $().smartWebBanner();
 ```
 
-##Example (with full options)##
+## Example (with full options)
 
 ```javascript
 $().smartWebBanner({
@@ -108,15 +108,15 @@ $().smartWebBanner({
 });
 ```
 
-##Download Now##
+## Download Now
 
 [Click here to view the download options.](http://kurtzenisek.com/p/smart-web-banner/#download)
 
-##Support##
+## Support
 
 <a href="http://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address" class="button" target="_blank">Email me</a>
 
-##FAQs##
+## FAQs
 
 **Need to have it save the homepage of your site rather than the page the visitor is on?**<br />
 Saving a page to the home screen saves the current page by default, but you can set the url option to be whatever URL you would like it to save & the plugin takes care of the rest.
@@ -131,7 +131,7 @@ Check out [Jasny's fork](http://jasny.github.com/jquery.smartbanner/) for Androi
 Also check out [iJason's fork](https://github.com/ijason/Smart-App-Banners) aimed purely at making it available for iOS apps in other iOS browsers (Google Chrome) & older iOS versions.
 Note: Both of these are for non-web apps. This is the only plugin aimed at web apps (to my knowledge).
 
-##License##
+## License
 
 jQuery Smart Web App Banner is provided under the [Apache License, 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 

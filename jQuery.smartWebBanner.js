@@ -1,15 +1,15 @@
 /*!
  * jQuery Smart Web App Banner (Add to Home Screen)
  * Copyright (c) 2014 Kurt Zenisek @ kzeni.com
- * Version: 1.4 (24-MAY-2014)
+ * Version: 1.5 (10-AUGUST-2017)
  * Requires: jQuery v1.7 or later
  */
 ;(function($){
 	$.fn.smartWebBanner = function(options){
 
 		// Find out about the device being used
-		var iPad = navigator.userAgent.match(/iPad/i) != null; // Check if using an iPad
-		var iPhone = navigator.userAgent.match(/iPhone/i) != null; // Check if using an iPhone
+		var iPad = navigator.userAgent.match(/iPad/i) !== null; // Check if using an iPad
+		var iPhone = navigator.userAgent.match(/iPhone/i) !== null; // Check if using an iPhone
 		var Safari = (/Safari/i).test(navigator.appVersion) && !(/CriOS/i).test(navigator.appVersion); // Check if using Safari (making sure to exclude Chrome for iOS)
 		var standalone = navigator.standalone; // Check if it's already a standalone web app or running within a webui view of an app (not mobile safari)
 		// Detect iOS version
@@ -22,10 +22,12 @@
 			}
 		}
 		var ver = iOSversion();
-		if(ver[0] <= 6) // They're running iOS 6 or earlier
-			var iOS7 = false;
-		else // Mark iOS 7 styling as true. This will need to be revisited if a new style is introduced in a future version of iOS.
-			var iOS7 = true;
+		var iOS7;
+		if(ver[0] <= 6){ // They're running iOS 6 or earlier
+			iOS7 = false;
+		}else{ // Mark iOS 7 styling as true. This will need to be revisited if a new style is introduced in a future version of iOS.
+			iOS7 = true;
+		}
 
 		// Find out about the website itself
 		var origHtmlMargin = parseFloat($('html').css('margin-top')); // Get the original margin-top of the HTML element so we can take that into account
@@ -33,10 +35,88 @@
 		var originalTitle = document.title; // Save the page's <title>
 		var originalURL = window.location.href; // Save the page's url
 
-		if(typeof options == 'string'){ // If they specified a command (like "show" or "hide")
+		function setCookie(name,value,exdays){
+			var exdate = new Date();
+			exdate.setDate(exdate.getDate()+exdays);
+			var cookieValue=encodeURI(value)+((exdays===null)?'':'; expires='+exdate.toUTCString());
+			document.cookie=name+'='+cookieValue+'; path=/;';
+		}
+		function getCookie(name){
+			var i,x,y,ARRcookies = document.cookie.split(";");
+			for(i=0;i<ARRcookies.length;i++){
+				x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+				y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+				x = x.replace(/^\s+|\s+$/g,"");
+				if(x===name){
+					return decodeURI(y);
+				}
+			}
+		}
+		function showInstructions(){
+			$('#swb-instructions').fadeIn(opts.popupSpeedIn);
+			if(opts.titleSwap){ // Swap out the page's <title> with the specified title
+				document.title = opts.title;
+			}else if($('meta[name="apple-mobile-web-app-title"]').length>0){ // Use the "apple-mobile-web-app-title" meta tag if present (final fallback being the page's <title> tag [which doesn't need to be accounted for since it's the default]).
+				document.title = $('meta[name="apple-mobile-web-app-title"]').attr('content');
+			}
+			if(opts.url){ // Swap out the page's url with the specified url
+				history.replaceState(null,null,opts.url);
+			}
+			if(opts.popupDuration !== 0){
+				setTimeout(function(){hideInstructions();},opts.popupDuration);
+			}
+			setCookie('swb-saved','true',opts.daysReminder);
+		}
+		function hideInstructions(){
+			$('#swb-instructions').fadeOut(opts.popupSpeedOut);
+			if(opts.titleSwap){ // Swap the page's <title> back to the original since they should've added it to their home screen by now & we might as well use what the title was before
+				setTimeout(function(){document.title = originalTitle;},12000);
+			}
+			if(opts.url){ // Swap out the page's url back to the original since they should've added it to their home screen by now & we might as well use what the url was before
+				setTimeout(function(){history.replaceState(null,null,originalURL);},12000);
+			}
+		}
+		function closeBanner(){
+			$('#smartWebBanner').stop().animate({
+				top:-(bannerHeight+(bannerHeight/3))
+			},opts.speedOut).removeClass('shown');
+			$('html').animate({
+				marginTop:origHtmlMargin
+			},opts.speedOut,function(){
+				setCookie('swb-closed','true',opts.daysHidden);
+				$('html').removeClass('swb-shown');
+				$('html').addClass('swb-closed');
+				$('#smartWebBanner').trigger('swb:closed');
+				hideInstructions();
+			});
+		}
+		function showBanner(){
+			$('#smartWebBanner').stop().animate({
+				top:0
+			},opts.speedIn).addClass('shown');
+			$('html').animate({
+				marginTop:origHtmlMargin+bannerHeight
+			},opts.speedIn,function(){
+				$('html').addClass('swb-shown');
+				$('html').removeClass('swb-closed');
+				$('#smartWebBanner').trigger('swb:shown');
+			});
+			$('#swb-close').on('click',function(){
+				closeBanner();
+				return false;
+			});
+			$('#swb-save,#swb-icon').on('click',function(){
+				showInstructions();
+				return false;
+			});
+		}
+
+		var opts;
+		if(typeof options === 'string'){ // If they specified a command (like "show" or "hide")
 			bannerHeight = $('#smartWebBanner').height(); // Accomodate different sized banners
-			if(typeof opts == 'undefined')
-				var opts = $.fn.smartWebBanner.defaults;
+			if(typeof opts === 'undefined'){
+				opts = $.fn.smartWebBanner.defaults;
+			}
 			switch(options){
 				case 'show':
 					if(!$('#smartWebBanner').hasClass('shown')){
@@ -51,44 +131,56 @@
 					return false;
 			}
 		}else{ // Check for options
-			var opts = $.extend({}, $.fn.smartWebBanner.defaults, options);
+			opts = $.extend({}, $.fn.smartWebBanner.defaults, options);
 		}
 
-		if(opts.autoApp && $('meta[name="apple-mobile-web-app-capable"]').length == 0) // Auto-add web app capable tag if it's missing
+		if(opts.autoApp && $('meta[name="apple-mobile-web-app-capable"]').length <= 0){ // Auto-add web app capable tag if it's missing
 			$('head').append('<meta name="apple-mobile-web-app-capable" content="yes" />');
+		}
 
 		function createBanner(){
 			$('body').append('<div id="smartWebBanner"><a href="#" id="swb-close">X</a><a href="#" id="swb-icon"></a><div id="swb-info"><strong>'+opts.title+'</strong><span>'+opts.author+'</span></div><a href="#" id="swb-save">Save</a></div><div id="swb-instructions">Tap <span class="icon"></span> and then <strong>Add to Home Screen.</strong><div class="arrow"></div></div>');
-			if(iPad)
+			if(iPad){
 				$('#smartWebBanner,#swb-instructions').addClass('ipad');
-			if(!iPad && !iPhone)
-				$('#swb-instructions').html('<strong>It appears this isn\'t an iOS device.</strong> This is a preview of the iPhone popup design though.');
-			if(opts.showFree)
-				$('#smartWebBanner').addClass('free');
-			if(opts.theme.toLowerCase() == 'auto'){
-				if(iOS7)
-					$('#smartWebBanner,#swb-instructions').addClass('ios7');
-				else
-					$('#smartWebBanner,#swb-instructions').addClass('ios6');
 			}
-			if(opts.theme.toLowerCase() == 'ios 7')
+			if(!iPad && !iPhone){
+				$('#swb-instructions').html('<strong>It appears this isn\'t an iOS device.</strong> This is a preview of the iPhone popup design though.');
+			}
+			if(opts.showFree){
+				$('#smartWebBanner').addClass('free');
+			}
+			if(opts.theme.toLowerCase() === 'auto'){
+				if(iOS7){
+					$('#smartWebBanner,#swb-instructions').addClass('ios7');
+				}else{
+					$('#smartWebBanner,#swb-instructions').addClass('ios6');
+				}
+			}
+			if(opts.theme.toLowerCase() === 'ios 7'){
 				$('#smartWebBanner,#swb-instructions').addClass('ios7');
-			if(opts.theme.toLowerCase() == 'ios 6')
+			}
+			if(opts.theme.toLowerCase() === 'ios 6'){
 				$('#smartWebBanner,#swb-instructions').addClass('ios6');
-			if(opts.theme.toLowerCase() == 'dark')
+			}
+			if(opts.theme.toLowerCase() === 'dark'){
 				$('#smartWebBanner,#swb-instructions').addClass('dark');
+			}
+			var iconURL;
 			if(opts.useIcon){
 				if($('link[rel="apple-touch-icon-precomposed"]').length > 0){
 					iconURL = $('link[rel="apple-touch-icon-precomposed"]').attr('href');
 				}else if($('link[rel="apple-touch-icon"]').length > 0){
 					iconURL = $('link[rel="apple-touch-icon"]').attr('href');
-					if(opts.iconGloss != false) // Don't auto-add gloss if they chose to not show it
+					if(opts.iconGloss !== false){ // Don't auto-add gloss if they chose to not show it
 						$('#swb-icon').addClass('gloss');
+					}
 				}
-				if(opts.iconGloss == true) // Add gloss no matter what since they want to show it
+				if(opts.iconGloss === true){ // Add gloss no matter what since they want to show it
 					$('#swb-icon').addClass('gloss');
-				if(opts.iconOverwrite != '')
+				}
+				if(opts.iconOverwrite !== ''){
 					iconURL = opts.iconOverwrite;
+				}
 				$('#swb-icon').css('background-image','url('+iconURL+')');
 			}
 			if(!opts.useIcon || !iconURL){
@@ -96,68 +188,8 @@
 			}
 			bannerHeight = $('#smartWebBanner').height(); // Accomodate different sized banners
 		}
-		function showBanner(){
-			$('#smartWebBanner').stop().animate({
-				top:0
-			},opts.speedIn).addClass('shown');
-			$('html').animate({
-				marginTop:origHtmlMargin+bannerHeight
-			},opts.speedIn);
-			$('#swb-close').on('click',function(){
-				closeBanner();
-				return false;
-			});
-			$('#swb-save,#swb-icon').on('click',function(){
-				showInstructions();
-				return false;
-			});
-		}
-		function closeBanner(){
-			$('#smartWebBanner').stop().animate({
-				top:-(bannerHeight+(bannerHeight/3))
-			},opts.speedOut).removeClass('shown');
-			$('html').animate({
-				marginTop:origHtmlMargin
-			},opts.speedOut);
-			hideInstructions();
-			setCookie('swb-closed','true',opts.daysHidden);
-		}
-		function showInstructions(){
-			$('#swb-instructions').fadeIn(opts.popupSpeedIn);
-			if(opts.titleSwap) // Swap out the page's <title> with the specified title
-				document.title = opts.title;
-			if(opts.url) // Swap out the page's url with the specified url
-				history.replaceState(null,null,opts.url);
-			if(opts.popupDuration != 0)
-				setTimeout(function(){hideInstructions();},opts.popupDuration);
-			setCookie('swb-saved','true',opts.daysReminder);
-		}
-		function hideInstructions(){
-			$('#swb-instructions').fadeOut(opts.popupSpeedOut);
-			if(opts.titleSwap) // Swap the page's <title> back to the original since they should've added it to their home screen by now & we might as well use what the title was before
-				setTimeout(function(){document.title = originalTitle;},12000);
-			if(opts.url) // Swap out the page's url back to the original since they should've added it to their home screen by now & we might as well use what the url was before
-				setTimeout(function(){history.replaceState(null,null,originalURL);},12000);
-		}
-		function setCookie(name,value,exdays){
-			var exdate = new Date();
-			exdate.setDate(exdate.getDate()+exdays);
-			var value=escape(value)+((exdays==null)?'':'; expires='+exdate.toUTCString());
-			document.cookie=name+'='+value+'; path=/;';
-		}
-		function getCookie(name){
-			var i,x,y,ARRcookies = document.cookie.split(";");
-			for(i=0;i<ARRcookies.length;i++){
-				x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-				y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-				x = x.replace(/^\s+|\s+$/g,"");
-				if(x==name){
-					return unescape(y);
-				}
-			}
-		}
 
-		if(opts.debug || ((iPhone || iPad) && Safari && !standalone && typeof getCookie('swb-closed') == 'undefined' && typeof getCookie('swb-saved') == 'undefined')){ // Show if debug. Show if iPhone/iPad in Mobile Safari & don't have cookies already.
+		if(opts.debug || ((iPhone || iPad) && Safari && !standalone && typeof getCookie('swb-closed') === 'undefined' && typeof getCookie('swb-saved') === 'undefined')){ // Show if debug. Show if iPhone/iPad in Mobile Safari & don't have cookies already.
 			createBanner();
 			showBanner();
 		}
@@ -167,7 +199,7 @@
 	// override these globally if you like (they are all optional)
 	$.fn.smartWebBanner.defaults = {
 		title: 'Web App', // What the title of the "app" should be in the banner
-		titleSwap: true, // Whether or not to use the title specified here has the default label of the home screen icon (otherwise uses the page's <title> tag)
+		titleSwap: true, // Whether or not to use the title specified here as the default label of the home screen icon (otherwise uses the page's "apple-mobile-web-app-title" meta tag or <title> tag as a fallback)
 		url: '', // URL to mask the page as before saving to home screen (allows for having it save the homepage of a site no matter what page the visitor is on)
 		author: 'Save to Home Screen', // What the author of the "app" should be in the banner
 		speedIn: 300, // Show animation speed of the banner
