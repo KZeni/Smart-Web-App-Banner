@@ -17,8 +17,8 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 - Add CSS &amp; JavaScript, and call the script... that's it. Graphics utilize CSS 3 &amp; use embedded icons at retina resolution (which is perfect for Mobile Safari) so there's no images to be concerned about.
 - Only shown when using Mobile Safari since that's the only browser with home screen integration.
 - Set how long it will be before the banner is shown again after it's closed &amp; after the visitor presses "save" (avoids annoying visitors).
-- Automatic icon detection via &lt;link&gt; tag (isn't shown if it isn't available, lets you easily overwrite it if desired, and it even adds gloss to the icon if it detects it isn't precomposed [can also be set via an option]).
-- Can automatically add `&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;` if not already present (saves site as a web app when added to home screen &amp; makes it so the banner isn't shown when revisiting the site).
+- Automatic icon detection via <link> tag (isn't shown if it isn't available, lets you easily overwrite it if desired, and it even adds gloss to the icon if it detects it isn't precomposed [can also be set via an option]).
+- Can automatically add `<meta name="apple-mobile-web-app-capable" content="yes" />` if not already present (saves site as a web app when added to home screen &amp; makes it so the banner isn't shown when revisiting the site).
 - Light &amp; Dark themes to make it fit your site design (I really love both). Preview the themes with the buttons on [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/)
 - Show/hide the banner on demand using `<a href="#show">$().smartWebBanner('show');</a>` &amp; `<a href="#hide">$().smartWebBanner('hide');</a></a>` (can be previewed at [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.com/p/smart-web-banner/))
 - Event triggers for swb:shown, swb:closed, swb:instructions-shown, and swb:instructions:closed on the banner element for performing additional actions when the banner or instructions are shown or closed.
