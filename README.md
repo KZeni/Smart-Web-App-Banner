@@ -11,31 +11,42 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 
 ## Features
 
-- The iOS 6 & 7+ Smart Banner look & feel, but made for web apps!
+- The iOS 6 &amp; 7+ Smart Banner look &amp; feel, but made for web apps!
 - Intelligently shows iOS 6/7+ banner design depending on the what the visitor is using.
-- Slides the entire site down rather than obstructing the page from your visitors with a popup.
-- Add CSS & JavaScript, and call the script... that's it. Graphics utilize CSS 3 & use embedded icons at retina resolution (which is perfect for Mobile Safari) so there's no images to be concerned about.
+- Slides the _entire site_ down rather than obstructing the page from your visitors with a popup.
+- Add CSS &amp; JavaScript, and call the script... that's it. Graphics utilize CSS 3 &amp; use embedded icons at retina resolution (which is perfect for Mobile Safari) so there's no images to be concerned about.
 - Only shown when using Mobile Safari since that's the only browser with home screen integration.
-- Set how long it will be before the banner is shown again after it's closed & after the visitor presses "save" (avoids annoying visitors).
-- Automatic icon detection via <link> tag (isn't shown if it isn't available, lets you easily overwrite it if desired, and it even adds gloss to the icon if it detects it isn't precomposed [can also be set via an option]).
-- Can automatically add <meta name="apple-mobile-web-app-capable" content="yes" /> if not already present (saves site as a web app when added to home screen & makes it so the banner isn't shown when revisiting the site).
-- Can be scaled/resized to fit your site's mobile viewport by changing the font-size of #smartWebBanner & #swb-instructions via CSS to have the rest scales with it (add .ipad to the selector for iPad-specific sizes).
-- Device-specific instructions ("add to home screen" is at the top of an iPad while it's at the bottom of an iPhone). Even matches the look & feel of the device's native popup (subtle color & size difference).
+- Set how long it will be before the banner is shown again after it's closed &amp; after the visitor presses "save" (avoids annoying visitors).
+- Automatic icon detection via &lt;link&gt; tag (isn't shown if it isn't available, lets you easily overwrite it if desired, and it even adds gloss to the icon if it detects it isn't precomposed [can also be set via an option]).
+- Can automatically add `&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;` if not already present (saves site as a web app when added to home screen &amp; makes it so the banner isn't shown when revisiting the site).
+- Light &amp; Dark themes to make it fit your site design (I really love both). Preview the themes with the buttons above, or <a href="#dark" class="theme-toggle">click here</a>.
+- Show/hide the banner on demand using `<a href="#show">$().smartWebBanner('show');</a>` &amp; `<a href="#hide">$().smartWebBanner('hide');</a></a>` (click to preview).
+- Event triggers for swb:shown, swb:closed, swb:instructions-shown, and swb:instructions:closed on the banner element for performing additional actions when the banner or instructions are shown or closed.
+- Adds classes to the page's HTML element based on the state of the banner for adjusting aspects of the site via CSS based on the banner's state.
+- Can be scaled/resized to fit your site's mobile viewport by changing the font-size of #smartWebBanner &amp; #swb-instructions via CSS to have the rest scales with it (add .ipad to the selector for iPad-specific sizes).
+- Device-specific instructions ("add to home screen" is at the top of an iPad while it's at the bottom of an iPhone). Even matches the look &amp; feel of the device's native popup (subtle color &amp; size difference).
 - Swaps out the page's URL with specified URL (using HTML5 replaceState) so that's what the home screen icon takes the visitor to after saving it rather than the page they happened to be on when they went to add it to their home screen (which is the default behavior). For example, make it so the home screen button is always your homepage.
-- Swaps out the page's title with the specified title so that's what the icon's default label is when adding it to the home screen (which would otherwise use the existing page title). Seems minor, but this can be impactful.
-- Helpful debug option (sets the banner to be shown in all browsers & disregards the already closed/saved cookies) makes previewing/testing the banner a breeze.
-- Light & Dark themes to make it fit your site design (I really love both).
-- Show/hide the banner on demand using $().smartWebBanner('show'); & $().smartWebBanner('hide');
+- Swaps out the page's title with the specified title so that's what the icon's default label is when adding it to the home screen (which would otherwise use the existing apple-mobile-web-app-title meta tag or the page's title). Seems minor, but this can be impactful.
+- Helpful debug option (sets the banner to be shown in all browsers &amp; disregards the already closed/saved cookies) makes previewing/testing the banner a breeze.
 - Incredibly configurable via plenty of options! *See example below for full list.
 
 ## Roadmap
 
-- Implement "apple-mobile-web-app-title" meta tag support.
+- Implement Chrome support & style for Android devices.
 - Improve the autoApp feature that adds the mobile-web-app meta tag so that it also prevents normal (non-AJAX) links from opening in Safari (unless leaving the domain or going to a media file [due to lack of a back button]). Change the default autoApp setting as it's now much more useful for standard sites.
-- Consider implementing in WordPress plugin form for those looking for this functionality without the ability/time to implement the script itself (have it pull the blog's name for the title & description for the "author"), and look into building out a plugin settings page for the script's options.
-- Get feedback from the community!
+- Consider implementing in WordPress plugin form for those looking for this functionality without the ability/time to implement the script itself (have it pull the blog's name for the title &amp; description for the "author"), and look into building out a plugin settings page for the script's options. Also, the script should be updated to automatically accomodate WordPress' admin bar.
+- Code overhaul/rewrite/cleanup.
+- Create a theme system which allows CSS files to be provided individually to determine the design (separate from the core styles). This is technically possible but many of the existing CSS styles need to be overwritten to accomplish a new design.
+- Get feedback from the community! (<a href="http://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address" class="button" target="_blank">Email me</a>)
 
 ## Changelog
+
+Version 1.5 - August 8, 2017
+- Added `swb:shown`, `swb:closed`, `swb:instructions-shown` and `swb:instructions-closed` events/triggers to the `$('#smartWebBanner')` element that are fired when the banner is shown and closed, respectively. This allows actions to occur when the banner is shown/hidden (ex. `$('#smartWebBanner').on('swb:closed',function(){alert('Banner was closed');});`)
+- Made the HTML element have `.swb-shown` and `.swb-closed` toggled depending on if the banner is shown or closed. This allows any parts of the site to be changed based on wheter the banner is shown by referencing those CSS classes.
+- Updated script to follow JSHint.
+- Implemented SCSS for the working stylesheet.
+- Made sure &quot;apple-mobile-web-app-title&quot; meta tag content/value is used for the homescreen icon's text label/title instead of the page's `<title>` tag when present (still used as the fallback).
 
 Version 1.4 - May 24, 2014
 
@@ -79,38 +90,25 @@ Version 1.0 - September 19, 2012
 
 ## Example (using default settings)
 
-```javascript
-$().smartWebBanner();
-```
+<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/basic.js?footer=minimal"></script>
 
 ## Example (with full options)
 
-```javascript
-$().smartWebBanner({
-	title: "Website Name", // What the title of the "app" should be in the banner | Default: "Web App"
-	titleSwap: true, // Whether or not to use the title specified here has the default label of the home screen icon (otherwise uses the page's <title> tag) | Default: true
-	url: '/', // URL to mask the page as before saving to home screen (allows for having it save the homepage of a site no matter what page the visitor is on) | Default: ""
-	author: "Company Name", // What the author of the "app" should be in the banner | Default: "Save to Home Screen"
-	speedIn: 300, // Show animation speed of the banner | Default: 300
-	speedOut: 400, // Close animation speed of the banner | Default: 400
-	useIcon: true, // Whether or not it should show site's apple touch icon (located via <link> tag) | Default: true
-	iconOverwrite: "http://other-url.com/icon-512x512.png", // Force the URL of the icon (even if found via <link> tag) | Default: ""
-	iconGloss: "auto", // Whether or not to show the gloss over the icon (true/false/"auto" [auto doesn't show if precomposed <link> tag is used]) | Default: "auto"
-	showFree: true, // Whether or not to show "Free" at bottom of info | Default: true
-	daysHidden: 15, // Duration to hide the banner after being closed (0 = always show banner) | Default: 15
-	daysReminder: 90, // Duration to hide the banner after "Save" is clicked *separate from when the close button is clicked* (0 = always show banner) | Default: 90
-	popupDuration: 6000, // How long the instructions are shown before fading out (0 = show until manually closed) | Default: 6000
-	popupSpeedIn: 200, // Show animation speed of the popup | Default: 200
-	popupSpeedOut: 900, // Close animation speed of the popup | Default: 900
-	theme: "auto", // Change between "auto", "iOS 7", "iOS 6" & "dark" themes to fit your site design | Default: "auto"
-	autoApp: false, // Whether or not it should auto-add the mobile-web-app meta tag that makes it open as an app rather than in mobile safari | Default: false
-	debug: false // Whether or not it should always be shown (even for non-iOS devices & if cookies have previously been set) *This is helpful for testing and/or previewing | Default: false
-});
-```
+<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/full-options.js?footer=minimal"></script>
+
+## Example performing actions when the banner is shown and/or hidden
+
+<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/perform-actions-on-toggle.js?footer=minimal"></script>
 
 ## Download Now
 
-[Click here to view the download options.](http://kurtzenisek.com/p/smart-web-banner/#download)
+- [Download](http://gum.co/jquery-smart-web-app-banner)<script type="text/javascript" src="https://gumroad.com/js/gumroad.js"></script>
+- [Use cdnjs](http://cdnjs.com/libraries/jquery-smart-web-app-banner)
+
+**It is open source:** You can [view it on Github](https://github.com/KZeni/Smart-Web-App-Banner) and download from there too!
+
+Requires: jQuery v1.7 or later
+Still using jQuery 1.3.2 - 1.8.x? Use the [jQuery.smartWebBanner.pre-1.7.min.js](https://github.com/KZeni/Smart-Web-App-Banner/blob/master/jQuery.smartWebBanner.pre-1.7.min.js) file instead.
 
 ## Support
 
@@ -118,15 +116,15 @@ $().smartWebBanner({
 
 ## FAQs
 
-**Need to have it save the homepage of your site rather than the page the visitor is on?**<br />
+**Need to have it save the homepage of your site rather than the page the visitor is on?**
 Saving a page to the home screen saves the current page by default, but you can set the url option to be whatever URL you would like it to save & the plugin takes care of the rest.
 
 Tip: set url to '/' to have it always be the homepage of your site while being independent of the domain itself. Also, it can't be a different domain for security reasons.
 
-**Need to adjust the size of the banner to fit the scale of your site?**<br />
+**Need to adjust the size of the banner to fit the scale of your site?**
 This plugin's CSS was built to refer to two elements (with one variant) that then determines the size of everything else. Simply change the font-size for #smartWebBanner & #swb-instructions (add .ipad for iPad-specific sizes) in your own CSS (or edit the plugin directly) to fit your needs.
 
-**Looking to use this to promote *non web-based* Android apps and/or iOS apps on older iOS versions and/or different browsers?**<br />
+**Looking to use this to promote *non web-based* Android apps and/or iOS apps on older iOS versions and/or different browsers?**
 Check out [Jasny's fork](http://jasny.github.com/jquery.smartbanner/) for Android apps & or iOS apps older than iOS 6.
 Also check out [iJason's fork](https://github.com/ijason/Smart-App-Banners) aimed purely at making it available for iOS apps in other iOS browsers (Google Chrome) & older iOS versions.
 Note: Both of these are for non-web apps. This is the only plugin aimed at web apps (to my knowledge).
