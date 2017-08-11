@@ -84,7 +84,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 		<li>Get feedback from the community! (<a href="https://www.google.com/recaptcha/mailhide/d?k=01mU-MMXHEZiapIGiiSSe78Q==&amp;c=h-nAexn4QTO2z6nieTeXVg==" onclick="window.open('https://www.google.com/recaptcha/mailhide/d?k\07501mU-MMXHEZiapIGiiSSe78Q\75\75\46c\75h-nAexn4QTO2z6nieTeXVg\75\075', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">Email Me</a>)</li>
 	</ul>
 	<h2>Changelog</h2>
-	<p>Version 1.5 - August 8, 2017</p>
+	<p>Version 1.5 - August 11, 2017</p>
 	<ul>
 		<li>Added <code>swb:shown</code>, <code>swb:closed</code>, <code>swb:instructions-shown</code> and <code>swb:instructions-closed</code> events/triggers to the <code>$('#smartWebBanner')</code> element that are fired when the banner is shown and closed, respectively. This allows actions to occur when the banner is shown/hidden (ex. <code>$('#smartWebBanner').on('swb:closed',function(){alert('Banner was closed');});</code>)</li>
 		<li>Made the HTML element have <code>.swb-shown</code> and <code>.swb-closed</code> toggled depending on if the banner is shown or closed. This allows any parts of the site to be changed based on wheter the banner is shown by referencing those CSS classes.</li>

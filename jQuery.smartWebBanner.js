@@ -1,7 +1,7 @@
 /*!
  * jQuery Smart Web App Banner (Add to Home Screen)
- * Copyright (c) 2014 Kurt Zenisek @ kzeni.com
- * Version: 1.5 (10-AUGUST-2017)
+ * Copyright (c) 2017 Kurt Zenisek @ kzeni.com
+ * Version: 1.5 (11-AUGUST-2017)
  * Requires: jQuery v1.7 or later
  */
 ;(function($){

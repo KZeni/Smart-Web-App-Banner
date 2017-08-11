@@ -41,7 +41,7 @@ Available at: [http://kurtzenisek.com/p/smart-web-banner/](http://kurtzenisek.co
 
 ## Changelog
 
-Version 1.5 - August 8, 2017
+Version 1.5 - August 11, 2017
 - Added `swb:shown`, `swb:closed`, `swb:instructions-shown` and `swb:instructions-closed` events/triggers to the `$('#smartWebBanner')` element that are fired when the banner is shown and closed, respectively. This allows actions to occur when the banner is shown/hidden (ex. `$('#smartWebBanner').on('swb:closed',function(){alert('Banner was closed');});`)
 - Made the HTML element have `.swb-shown` and `.swb-closed` toggled depending on if the banner is shown or closed. This allows any parts of the site to be changed based on wheter the banner is shown by referencing those CSS classes.
 - Updated script to follow JSHint.

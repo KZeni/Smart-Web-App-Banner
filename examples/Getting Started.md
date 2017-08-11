@@ -5,11 +5,11 @@
 **Note:** You don't need to add this if jQuery is already being called on the page.
 ## 2. Add the banner’s CSS by adding the following to the `<head>` of your page/site:
 ```
-<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-smart-web-app-banner/1.4/jquery.smartwebbanner.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-smart-web-app-banner/1.5/jquery.smartwebbanner.min.css" rel="stylesheet" type="text/css" />
 ```
 ## 3. Add the banner’s JavaScript by adding the following before the closing `</body>` tag (making it so it lets the main part of your site load first):
 ```
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-smart-web-app-banner/1.4/jquery.smartwebbanner.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-smart-web-app-banner/1.5/jquery.smartwebbanner.min.js"></script>
 ```
 ## 4. Initiate the banner by adding the following _after_ the banner's JavaScript file but _before_ the closing `</body>` tag:
 ```
