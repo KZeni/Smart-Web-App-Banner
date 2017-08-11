@@ -86,7 +86,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 		<li>Made the HTML element have <code>.swb-shown</code> and <code>.swb-closed</code> toggled depending on if the banner is shown or closed. This allows any parts of the site to be changed based on wheter the banner is shown by referencing those CSS classes.</li>
 		<li>Updated script to follow JSHint.</li>
 		<li>Implemented SCSS for the working stylesheet.</li>
-		<li>Made sure &quot;apple-mobile-web-app-title&quot; meta tag content/value is used for the homescreen icon's text label/title instead of the page's <code>&gt;title&lt;</code> tag when present (still used as the fallback).</li>
+		<li>Made sure &quot;apple-mobile-web-app-title&quot; meta tag content/value is used for the homescreen icon's text label/title instead of the page's <code>&lt;title&gt;</code> tag when present (still used as the fallback).</li>
 	</ul>
 	<p>Version 1.4 - May 24, 2014</p>
 	<ul>
@@ -126,9 +126,9 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 	<h2>Beginner's Getting Started Guide</h2>
 	<p><a href="https://gist.github.com/KZeni/cbd6e19e94617cda9a16#file-getting-started-md" class="button" target="_blank">Open Getting Started Guide</a></p>
 	<h2>Example (using default settings)</h2>
-	<script src="https://gist.github.com/KZeni/9606241.js"></script>
+	<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/basic.js?footer=minimal"></script>
 	<h2>Example (with full options)</h2>
-	<script src="https://gist.github.com/KZeni/9606221.js"></script>
+	<script src="https://gist-it.appspot.com/https://github.com/KZeni/Smart-Web-App-Banner/blob/master/examples/full-options.js?footer=minimal"></script>
 	<h2>Example of additional code to toggle a class on the HTML element when the banner's shown/hidden</h2>
 	<script src="https://gist.github.com/KZeni/2c7be4ccbed2914082492b72ff17cde1.js"></script>
 	<h2 id="download">Download Now</h2>
