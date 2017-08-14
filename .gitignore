@@ -1,2 +1,5 @@
 index.php
 README.html
+examples/*.html
+examples/*.min.*
+examples/*.min.*.map
