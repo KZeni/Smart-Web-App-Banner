@@ -1,11 +1,11 @@
 {
-  "name": "Smart-Web-App-Banner",
+  "name": "jQuery-Smart-Web-App-Banner",
   "version": "1.5",
   "authors": [
-    "KZeni1@gmail.com"
+    "Kurt Zenisek <kurt@kzeni.com> (http://kzeni.com/)"
   ],
   "description": "Add this small script to your site & invite your visitors to save your site to their home screen alongside the rest of their apps!",
-  "main": "jQuery.smartWebBanner.min.js",
+  "homepage": "http://kurtzenisek.com/p/smart-web-banner/",
   "keywords": [
   	"web app banner",
   	"web banner",
@@ -17,8 +17,7 @@
   	"iPhone",
   	"iPad"
   ],
-  "license": "Apache License, 2.0",
-  "homepage": "http://kurtzenisek.com/p/smart-web-banner/",
+  "main": "jquery.smartwebbanner.min.js",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -27,6 +26,11 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.7"
-  }
+    "jquery": ">=1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KZeni/Smart-Web-App-Banner.git"
+  },
+  "license": "Apache License, 2.0"
 }
